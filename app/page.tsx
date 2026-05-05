@@ -306,7 +306,7 @@ export default function DrippStorePromo() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <Image 
-            src="https://images.unsplash.com/photo-1552346154-21d32810baa3?auto=format&fit=crop&w=1920&q=80"
+            src="https://picsum.photos/seed/urban/1920/1080"
             alt="Dripp Store"
             fill
             className="object-cover opacity-80 object-center drop-shadow-2xl"
