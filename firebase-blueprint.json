@@ -1,0 +1,103 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "A user of the Dripp Store application.",
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "User's email address"
+        },
+        "name": {
+          "type": "string",
+          "description": "User's display name"
+        },
+        "role": {
+          "type": "string",
+          "enum": ["customer", "admin", "driver"],
+          "description": "User's role for RBAC."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the user document was created."
+        }
+      },
+      "required": ["email", "name", "role", "createdAt"]
+    },
+    "Category": {
+      "title": "Category",
+      "description": "A product category.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "slug": { "type": "string" },
+        "isActive": { "type": "boolean" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["name", "slug", "isActive", "createdAt", "updatedAt"]
+    },
+    "Product": {
+      "title": "Product",
+      "description": "A store product.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "price": { "type": "number" },
+        "categoryId": { "type": "string" },
+        "images": { "type": "array" },
+        "isPublished": { "type": "boolean" },
+        "stock": { "type": "number" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["name", "description", "price", "categoryId", "images", "isPublished", "stock", "createdAt", "updatedAt"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "A customer order.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "status": { 
+          "type": "string",
+          "enum": ["pending", "accepted", "in_transit", "delivered", "cancelled"]
+        },
+        "items": { "type": "array" },
+        "totalAmount": { "type": "number" },
+        "driverId": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["userId", "status", "items", "totalAmount", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": {
+        "$ref": "#/entities/User"
+      },
+      "description": "Stores user profiles."
+    },
+    "/categories/{categoryId}": {
+      "schema": {
+        "$ref": "#/entities/Category"
+      },
+      "description": "Stores product categories."
+    },
+    "/products/{productId}": {
+      "schema": {
+        "$ref": "#/entities/Product"
+      },
+      "description": "Stores products."
+    },
+    "/orders/{orderId}": {
+      "schema": {
+        "$ref": "#/entities/Order"
+      },
+      "description": "Stores customer orders."
+    }
+  }
+}

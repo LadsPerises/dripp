@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="100%" height="100%">
+  <!-- Background color of the container, simulating transparency or matching black theme -->
+  <rect width="100%" height="100%" fill="#0a0a0a" />
+  
+  <g transform="translate(100, 200)">
+    <!-- Right side gradient -->
+    <defs>
+      <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#FF6A00" />
+        <stop offset="100%" stop-color="#EE4B00" />
+      </linearGradient>
+      
+      <!-- Left side gradient -->
+      <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#FFB320" />
+        <stop offset="100%" stop-color="#FF9500" />
+      </linearGradient>
+      
+      <clipPath id="roundedClip">
+        <rect width="800" height="220" rx="30" />
+      </clipPath>
+    </defs>
+    
+    <g clip-path="url(#roundedClip)">
+      <!-- Left part -->
+      <rect width="800" height="220" fill="url(#g2)" />
+      <!-- Diagonal cut for right side -->
+      <path d="M 350 0 L 800 0 L 800 220 L 250 220 Z" fill="url(#g1)" />
+    </g>
+    
+    <!-- Text -->
+    <text x="400" y="140" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="100" fill="white" text-anchor="middle" letter-spacing="-2">Dripp Store</text>
+  </g>
+</svg>
